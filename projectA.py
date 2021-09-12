@@ -36,7 +36,7 @@ class a:
             ["evl" , "show evaluation"],
             ["rec" , "show records"],
             ["agr" , "add group -> agr [groupName] [member1] [member2] [...]"],
-            ["rgr" , "remove group -> rgr [groupName]"],
+            ["dgr" , "remove group -> rgr [groupName]"],
             ["lgr" , "list of groups"],
             ["imp" , "import records -> imp [fileName]"],
             ["exp" , "export records -> exp [fileName]"],
@@ -150,7 +150,10 @@ class a:
 
     def ListGroups(self, cmd):
         for group in self.groups:
-            print('{:<10}{:>19}'.format(group, self.groups[group]))
+            members = ""
+            for n in self.groups[group]:
+                members += n + " "
+            print("{:<10}{:>19}".format(group, members))
 
     def ImportRecords(self, file):
         try:
